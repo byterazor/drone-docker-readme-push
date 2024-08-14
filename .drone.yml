@@ -87,6 +87,15 @@ steps:
       - buildah login -u $${USERNAME} -p $${PASSWORD} registry.hub.docker.com
       - buildah manifest push --all drone-docker-readme-push:latest docker://registry.hub.docker.com/byterazor/drone-docker-readme-push:latest 
       - buildah manifest drone-docker-readme-push:latest
+  - name: push readme
+    image: byterazor/drone-docker-readme-push:latest
+    environment:
+      REPOSITORY_NAME: byterazor/drone-docker-readme-push
+      FILENAME: README.md
+      USERNAME: 
+        from_secret: username
+      PASSWORD: 
+        from_secret: password
 
 depends_on:
   - build-amd64
