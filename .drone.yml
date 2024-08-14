@@ -89,7 +89,7 @@ steps:
       - buildah manifest drone-docker-readme-push:latest
   - name: push readme
     image: byterazor/drone-docker-readme-push:latest
-    environment:
+    settings:
       REPOSITORY_NAME: byterazor/drone-docker-readme-push
       FILENAME: README.md
       USERNAME: 
